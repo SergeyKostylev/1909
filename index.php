@@ -1,3 +1,22 @@
+<?php
+
+$a = rand(-5, 5);
+$b = rand(0, 1);
+
+if ($b) {
+    $c = $a / $b;
+}
+
+// $output = isset($c) ? 'a/b = ' . $c : 'Division by zero';
+
+if (isset($c)) {
+    $output = "a/b = {$c}";
+} else {
+    $output = 'Division by zero';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +27,13 @@
 </head>
 <body>
     
-    <?php
-        
-        
-        
-    ?>
+    <h1>Calculator</h1>
     
+    a =  <?=$a ?>
+    <br>
+    b =  <?=$b ?>
+    <hr>
+    Result: <?=$output ?>
     
 </body>
 </html>
