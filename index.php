@@ -43,17 +43,25 @@ $citiesMaxIndex = count($cities) - 1;
 $employees = [];
 
 $employeesAmount = rand(5, EMPLOYEES_MAX_AMOUNT);
+$salarySum = 0;
 
 for ($i = 1; $i <= $employeesAmount; $i++) {
     $nameIndex = rand(0, $namesMaxIndex);
     $cityIndex = rand(0, $citiesMaxIndex);
+    $salary = rand(100, 1000);
+    
+    if ($salary > 100 && $salary < 500) {
+        continue;
+    }
     
     $employee = [
         'id' => $i,
         'name' => $names[$nameIndex],
-        'city' => $cities[$cityIndex]
+        'city' => $cities[$cityIndex],
+        'salary' => $salary
     ];
     
+    $salarySum += $employee['salary'];
     $employees[] = $employee;
 }
 
@@ -68,7 +76,7 @@ for ($i = 1; $i <= $employeesAmount; $i++) {
     <title>Document</title>
     <style type="text/css">
         tr.even td {
-            background: #555;
+            background: #aaa;
         }
     </style>
 </head>
@@ -79,19 +87,27 @@ for ($i = 1; $i <= $employeesAmount; $i++) {
             <th>Id</th>
             <th>Name</th>
             <th>City</th>
+            <th>Salary</th>
         </tr>
         
         <?php foreach ($employees as $i => $employee) : ?> 
-        
             <tr <?=$i % 2 == 0 ? " class='even' " : ''  ?> >
                 <td><?=$employee['id']?></td>
                 <td><?=$employee['name']?></td>
                 <td><?=$employee['city']?></td>
+                <td>$ <?=$employee['salary']?></td>
             </tr>
         
         <?php endforeach; ?>
         
+        <tr>
+            <td colspan='3' align='right'>Total salary:</td>
+            <td>$ <?=$salarySum?></td>
+        </tr>    
     </table>
+    
+    
+    
     
 </body>
 </html>
