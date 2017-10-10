@@ -1,115 +1,70 @@
 <?php
 
-$a = rand(-5, 5);
-$b = rand(0, 1);
+$n = 1000;
+$i = 0;
 
-// switch ($a) {
-//     case -2: echo 'minus two'; break 
-//     case 2: 
-//         echo 'two'; 
-//         break
-//     case 5: echo 'five'; break
-//     default: // ...
-// }
+do {
+    $n = $n / 2;
+    $i++;
+} while ($n >= 50);
 
-
-// if ($a == -2) {
-//     // ...
-// } elseif ($a == 2) {
-//     // ...
-// } elseif ($a == 5) {
-//     // ...
-// } else {
-//     // ...
-// }
-
-if ($b) {
-    $c = $a / $b;
+echo "#12: Result: {$n}, iterations: {$i} <hr>";
+echo '#13:';
+echo '<table>';
+$rand_i = rand(1,20);
+$rand_j = rand(1,20);
+for ($i = 1; $i <= $rand_i; $i++) {
+    echo '<tr>';
+    for ($j = 1; $j <= $rand_j; $j++) {
+        $randomR = dechex(rand(0, 255));
+        $randomG = dechex(rand(0, 255));
+        $randomB = dechex(rand(0, 255));
+        $color = $randomR . $randomG . $randomB;
+        echo '<td bgcolor="#' . $color . '">' . $i * $j . '</td>';
+    }
+    echo '</tr>';
 }
 
-// $output = isset($c) ? 'a/b = ' . $c : 'Division by zero';
+echo '</table><hr>';
 
-if (isset($c)) {
-    $output = "a/b = {$c}";
-} else {
-    $output = 'Division by zero';
+// $names = ['Andy', 'Mike', 'Bob'];
+// var_dump(array_search('Mike', $names));
+
+$months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+
+echo "#17: <br>";
+foreach ($months as $month) {
+    if ($month == date('M')) {
+        $month = "<b>{$month}</b>";
+    }
+    echo $month;
+    echo '<br>';
 }
 
-// $a = 1;
-// while ($a <= 20) {
-//     if ($a % 2 == 1) {
-//         echo $a . '<br>';    
-//     }
-    
-//     $a++;    
+// echo date('Y-M-d H:i:s');
+echo "<hr>";
+
+// changing values in array
+// $numbers = range(1, 10);
+
+// foreach ($numbers as & $number) {
+//     $number *= 2;
 // }
+// unset($number);
+// var_dump($numbers);
 
+echo "#23: <br>";
 
-$human = [
-    // 'name' => 'Andy',
-    'age' => 27,
-    'city' => 'Kyiv'
-];
+$a = $b = 256652; // 2 + 5 + 6    652: 6, 60+5, 650+2
+$reveresed_a = 0;
+$sum = 0;
 
-// echo $human['name'];
-//echo isset($human['name']) ? $human['name'] : null ;
-
-
-$en = ['one', 'two', 'three'];
-$ge = ['einz', 'zwei', 'drei'];
-$ua = ['odyn', 'dwa', 'try'];
-
-// echo $en;
-
-
-$langs = ['en' => $en, 'ge' => $ge, 'ua' => $ua];
-// $langs = array_values($langs);
-
-// $length = count($langs);
-// for ($i = 0; $i < $length ; $i++) {
-//     $lang = $langs[$i];
-//     $langCount = count($lang);
-    
-//     for ($j = 0; $j < $langCount; $j++) {
-//         echo $lang[$j] . ' ';
-//     }
-//     echo '<br>';
-// }
-
-// unset($human['name'])
-
-foreach ($langs as $key => $lang) {
-    var_dump($key, $lang);
+while ($a) {
+    $r = $a % 10; // 6, 5, 2
+    $reveresed_a = $reveresed_a * 10 + $r; //  6, 60+5, 650+2
+    $sum += $r;
+    $a /= 10; // 25.6, 2.5, 0.2
+    $a = (int) $a; // 25, 2, 0
 }
 
-
-
-
-
-
-
-
-die('Bye');
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>Calculator</h1>
-    
-    a = <?=$a ?>
-    <br>
-    b = <?=$b ?>
-    <hr>
-    Result: <?=$output ?>
-    
-</body>
-</html>
+echo var_dump($b == $reveresed_a);
