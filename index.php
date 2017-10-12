@@ -1,70 +1,120 @@
 <?php
 
-$n = 1000;
-$i = 0;
-
-do {
-    $n = $n / 2;
-    $i++;
-} while ($n >= 50);
-
-echo "#12: Result: {$n}, iterations: {$i} <hr>";
-echo '#13:';
-echo '<table>';
-$rand_i = rand(1,20);
-$rand_j = rand(1,20);
-for ($i = 1; $i <= $rand_i; $i++) {
-    echo '<tr>';
-    for ($j = 1; $j <= $rand_j; $j++) {
-        $randomR = dechex(rand(0, 255));
-        $randomG = dechex(rand(0, 255));
-        $randomB = dechex(rand(0, 255));
-        $color = $randomR . $randomG . $randomB;
-        echo '<td bgcolor="#' . $color . '">' . $i * $j . '</td>';
-    }
-    echo '</tr>';
+function _if()
+{
+    
 }
 
-echo '</table><hr>';
-
-// $names = ['Andy', 'Mike', 'Bob'];
-// var_dump(array_search('Mike', $names));
-
-$months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
-
-echo "#17: <br>";
-foreach ($months as $month) {
-    if ($month == date('M')) {
-        $month = "<b>{$month}</b>";
-    }
-    echo $month;
-    echo '<br>';
+function _else()
+{
+    
 }
 
-// echo date('Y-M-d H:i:s');
-echo "<hr>";
+function ifElse($condition, $f1, $f2)
+{
+    if ($condition) {
+        $f1();
+    } else {
+        $f2();
+    } 
+}
 
-// changing values in array
-// $numbers = range(1, 10);
+// ifElse(-1 > 0, function() {
+//     echo 1;
+//     echo 2;
+// }, function() {
+//     echo 2;
+//     echo 3;
+// });
 
-// foreach ($numbers as & $number) {
-//     $number *= 2;
+
+
+$arr = range(1, 10);
+$arr[] = null;
+
+var_dump($arr);
+
+// function test(&$element)
+// {
+//     $element *= 2;
 // }
-// unset($number);
-// var_dump($numbers);
 
-echo "#23: <br>";
+// array_walk($arr, function($element) {
+//     return $element*2;
+// });
 
-$a = $b = 256652; // 2 + 5 + 6    652: 6, 60+5, 650+2
-$reveresed_a = 0;
-$sum = 0;
 
-while ($a) {
-    $r = $a % 10; // 6, 5, 2
-    $reveresed_a = $reveresed_a * 10 + $r; //  6, 60+5, 650+2
-    $sum += $r;
-    $a /= 10; // 25.6, 2.5, 0.2
-    $a = (int) $a; // 25, 2, 0
-}
+$arr = array_filter($arr, function($element) {
+    return $element % 2;
+});
 
-echo var_dump($b == $reveresed_a);
+var_dump($arr);
+
+
+// function hello()
+// {
+//     echo 'hello';
+// }
+
+// function hello2()
+// {
+//     echo 'hello2';
+// }
+
+
+
+// function call($func)
+// {
+//     $func();
+// }
+
+// $func = function() { 
+//     echo 123; 
+// };
+
+// call($func);
+
+
+
+// p(n) = 1+2+3+...+n = (1+2+3+..+(n-1))+n 
+//      = p(n-1)+n
+// x^n = x^(n-1)*x
+
+// function sumRecursive($n)
+// {
+//     if ($n == 1) {
+//         return 1;
+//     }
+    
+//     return sumRecursive($n - 1) + $n;
+// }
+
+// sumRecursive(4);
+// sumRecursive(4): if -> false -> sumRecursive(3) + 4: 6+4=10
+// sumRecursive(3): if -> false -> sumRecursive(2) + 3: 3+3=6
+// sumRecursive(2): if -> False -> sumRecursive(1) + 2: 1+2=3
+// sumRecursive(1): 1 
+
+
+
+// function sum($n)
+// {
+//     $s = 0;
+    
+//     for ($i = 1; $i <= $n; $i++) {
+//         $s += $i;
+//     }
+    
+//     return $s;
+// }
+
+
+
+
+// function hello()
+// {
+    
+//     hello();
+// }
+
+// hello();
