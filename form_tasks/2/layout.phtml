@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register</h1>
+
+<p>2. Создать форму с элементом textarea. При отправке формы скрипт должен выдавать ТОП3 длинных слов в тексте. Реализовать с помощью функции.</p>
+
+
+    <b><?=$message ?></b>
+    
+    <form method='post'>
+        <textarea name="words_1"><?=$formValues['words_1']?></textarea>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <?php if (!is_null($words)) : ?>
+        Result: <?=$words?> 
+    <?php endif ?>
+    
+</body>
+</html>

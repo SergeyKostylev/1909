@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register</h1>
+
+<p>1. Создать форму с двумя элементами textarea. При отправке формы скрипт должен выдавать только те слова, которые есть и в первом и во втором поле ввода.
+Реализацию это логики необходимо поместить в функцию getCommonWords($a, $b), которая будет возвращать массив с общими словами.
+</p>
+
+    <b><?=$message ?></b>
+    
+    <form method='post'>
+        <textarea name="words_1"><?=$formValues['words_1']?></textarea>
+        <textarea name="words_2"><?=$formValues['words_2']?></textarea>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <?php if (!is_null($words)) : ?>
+        Result: <?=$words ? $words : 'No common words' ?>
+    <?php endif ?>
+    
+</body>
+</html>
