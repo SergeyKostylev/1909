@@ -13,11 +13,32 @@
     <b><?=$message ?></b>
     
     <form method='post'>
-        <input type="text" name="first_name" placeholder='First name' value='<?=requestPost('first_name') ?>' > <br>
-        <input type="text" name="last_name"  placeholder='Last name' value='<?=requestPost('last_name') ?>' ><br>
+        <input type="text" name="name"  placeholder='Name' value='<?=requestPost('name') ?>' ><br>
         <input type="email" name="email"  placeholder='Email' value='<?=requestPost('email') ?>' ><br>
+        <textarea placeholder='Message...' name="message"><?=requestPost('message') ?></textarea>
+        <input type="text" name="user_security_number" placeholder='Enter number'/>
+        <input type="hidden" name="security_number" value="<?=$securityNumber?>"/>
         <input type="submit" value="Submit"/>
     </form>
+    <img src="/form/captcha.php?number=<?=$securityNumber?>"></img>
+    
+    <hr>
+    
+    <h2>Comments</h2>
+    <?php foreach ($comments as $comment) : ?>
+        <div class='comment'>
+            <h3><?=$comment['name']?></h3>
+            <a href="?action=delete&amp;id=<?=$comment['id']?>">Delete</a>
+            <br>
+            <?=$comment['message']?> 
+            <i><?=$comment['created'] ?></i>
+            <br>
+        </div>
+        
+        
+    
+    <?php endforeach ?>
+    
     
 </body>
 </html>
