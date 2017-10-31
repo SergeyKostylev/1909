@@ -2,6 +2,10 @@
 
 define('COMMENTS_STORAGE', 'comments.txt');
 
+function removeSwearing(&$comment)
+{
+    $comment['message'] = str_replace('sheet', 'sh*t', $comment['message']);
+}
 
 function countVisit()
 {
