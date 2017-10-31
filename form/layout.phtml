@@ -8,9 +8,11 @@
 </head>
 <body>
     
+    You visited this page: <?=$counter?> time(s).
+    
     <h1>Register</h1>
 
-    <b><?=$message ?></b>
+    <b><?=getFlash() ?></b>
     
     <form method='post'>
         <input type="text" name="name"  placeholder='Name' value='<?=requestPost('name') ?>' ><br>

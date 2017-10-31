@@ -3,6 +3,51 @@
 define('COMMENTS_STORAGE', 'comments.txt');
 
 
+function countVisit()
+{
+    $count = cookieGet('visits_count');
+    $count++;
+    cookieSet('visits_count', $count);
+    
+    return $count;
+}
+
+function cookieSet($name, $value, $expire = 3600, $path = '/')
+{
+    setcookie($name, $value, time() + $expire, $path);
+}
+
+function cookieRemove($name)
+{
+    cookieSet($name, '', -1);
+    unset($_COOKIE[$name]);
+}
+
+function cookieGet($name)
+{
+    return getValue($_COOKIE, $name);
+}
+
+function setFlash($message)
+{
+    $_SESSION['flash_message'] = $message;
+}
+
+function getFlash()
+{
+    $message = getValue($_SESSION, 'flash_message');
+    removeSession('flash_message');
+    
+    return $message;
+}
+
+function removeSession($key)
+{
+    if (isset($_SESSION[$key])) {
+        unset($_SESSION[$key]);
+    }
+}
+
 function loadComments()
 {
     $contents = @file_get_contents(COMMENTS_STORAGE);

@@ -1,8 +1,10 @@
 <?php
 
-include 'functions.php';
+session_start();
 
-$message = requestGet('message');
+include 'functions.php';
+$counter = countVisit();
+// $message = requestGet('message');
 $securityNumber = rand(1000, 9999);
 
 
@@ -19,13 +21,15 @@ if ($_POST) {
         $comment = createComment($_POST);
         $result = save($comment);
         $message = $result === false ? 'Error saving' : 'Saved';
+        setFlash($message);
         
-        redirect('/form?message=' . $message);
+        redirect('/form');
     } 
     // no else because redirect calls die();
     
     // tell user that form is invlalid
     $message = 'Form is not valid';
+    setFlash($message);
 }
 
 $comments = loadComments();

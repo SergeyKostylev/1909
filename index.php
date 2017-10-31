@@ -1,120 +1,29 @@
 <?php
 
-function _if()
-{
-    
-}
+session_start();
 
-function _else()
-{
-    
-}
+var_dump($_SESSION);
+echo session_save_path();
 
-function ifElse($condition, $f1, $f2)
-{
-    if ($condition) {
-        $f1();
-    } else {
-        $f2();
-    } 
-}
+// $_SESSION['first_session_value'] = 'Hello session';
 
-// ifElse(-1 > 0, function() {
-//     echo 1;
-//     echo 2;
-// }, function() {
-//     echo 2;
-//     echo 3;
-// });
+$_SESSION['arr'] = ['one' => 'einz', 'two' => 'zwei'];
 
+// PHPSESSID
+// u3eag8f15dhl2rqvn1a1m55ef2
+// first_session_value|s:13:"Hello session";
+// first_session_value|s:13:"Hello session";arr|a:2:{s:3:"one";s:4:"einz";s:3:"two";s:4:"zwei";}
+// $time = time() + 30 * 60; 
 
+// // setcookie('test', 123); 
 
-$arr = range(1, 10);
-$arr[] = null;
-
-var_dump($arr);
-
-// function test(&$element)
-// {
-//     $element *= 2;
-// }
-
-// array_walk($arr, function($element) {
-//     return $element*2;
-// });
-
-
-$arr = array_filter($arr, function($element) {
-    return $element % 2;
-});
-
-var_dump($arr);
-
-
-// function hello()
-// {
-//     echo 'hello';
-// }
-
-// function hello2()
-// {
-//     echo 'hello2';
-// }
-
-
-
-// function call($func)
-// {
-//     $func();
-// }
-
-// $func = function() { 
-//     echo 123; 
-// };
-
-// call($func);
-
-
-
-// p(n) = 1+2+3+...+n = (1+2+3+..+(n-1))+n 
-//      = p(n-1)+n
-// x^n = x^(n-1)*x
-
-// function sumRecursive($n)
-// {
-//     if ($n == 1) {
-//         return 1;
-//     }
-    
-//     return sumRecursive($n - 1) + $n;
-// }
-
-// sumRecursive(4);
-// sumRecursive(4): if -> false -> sumRecursive(3) + 4: 6+4=10
-// sumRecursive(3): if -> false -> sumRecursive(2) + 3: 3+3=6
-// sumRecursive(2): if -> False -> sumRecursive(1) + 2: 1+2=3
-// sumRecursive(1): 1 
-
-
-
-// function sum($n)
-// {
-//     $s = 0;
-    
-//     for ($i = 1; $i <= $n; $i++) {
-//         $s += $i;
-//     }
-    
-//     return $s;
-// }
+// setcookie('test3', 256, time() - 1);
+// setcookie('test4', 512, time()+100000000000, '/form');
+// var_dump($_COOKIE);
 
 
 
 
-// function hello()
-// {
-    
-//     hello();
-// }
 
-// hello();
+
+
